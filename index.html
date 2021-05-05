@@ -5,8 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  
+  <form action="" name='form' method="get" class="book-add-form">
+    <input type="text" name="title" id="title" placeholder="Title">
+    <input type="text" name="author" id="author" placeholder="Author">
+    <input type="number" name="pages" id="pages" placeholder="Number of Pages">
+    <button type="submit" onClick='addBookToLibraryinList(this.form)'>Add Book</button>
+  </form>
+  <script src="./index.js"></script>
 </body>
 </html>
