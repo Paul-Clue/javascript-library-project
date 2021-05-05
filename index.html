@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+  <div id="show"></div>
   <form action="" name='form' method="get" class="book-add-form">
     <input type="text" name="title" id="title" placeholder="Title">
     <input type="text" name="author" id="author" placeholder="Author">
     <input type="number" name="pages" id="pages" placeholder="Number of Pages">
-    <button type="submit" onClick='addBookToLibraryinList(this.form)'>Add Book</button>
+    <input type="button" onClick='addBookToLibrary(this.form)'>Add Book</button>
   </form>
   <script src="./index.js"></script>
 </body>
