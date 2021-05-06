@@ -17,12 +17,26 @@ function addBookToLibrary (form) {
   let pges = form.pages.value;
   b1 = new Book(tle, athr, pges);
   myLibrary.push(b1);
+
+  if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  
+    // Retrieve
+    lib = JSON.parse(localStorage.getItem("myLibrary"));
+    document.getElementById("show").innerHTML = lib;
+  } else {
+    document.getElementById("show").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+
   form.title.value = '';
   form.author.value = '';
   form.pages.value = '';
-  console.log(myLibrary);
 }
 
+
+
+console.log(myLibrary);
 function displayLibrary () {
 }
 
