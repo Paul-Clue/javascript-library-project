@@ -1,8 +1,8 @@
 let myLibrary = [];
 class Book {
-  constructor(author, title, pages) {
-      this.author = author;
+  constructor(title, author ,pages) {
       this.title = title;
+      this.author = author;
       this.pages = pages;
   };
 }
@@ -12,6 +12,10 @@ function addBookToLibrary (form) {
   let pges = form.pages.value;
   b1 = new Book(tle, athr, pges);
   myLibrary.push(b1);
+  form.title.value = '';
+  form.author.value = '';
+  form.pages.value = '';
+  console.log(myLibrary);
 }
 
 function displayLibrary () {
