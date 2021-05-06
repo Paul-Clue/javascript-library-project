@@ -1,23 +1,28 @@
 let myLibrary = [];
+let index1 = 0;
 if(localStorage.getItem('myLibrary') === null){
   localStorage.setItem('myLibrary', JSON.stringify([]));
+  let index1 = 0;
 }else{
-  myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
+  myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  let index1 = JSON.parse(localStorage.getItem('myLibrary.length -1'));
 }
 class Book {
-  constructor(title, author, pages) {
+  constructor(title, author, pages, index) {
       this.title = title;
       this.author = author;
       this.pages = pages;
+      this.index = index;
   };
 }
 function addBookToLibrary (form) {
   let tle = form.title.value;
   let athr = form.author.value;
   let pges = form.pages.value;
-  if(tle != "" && athr != "" && pges != ""){
+  let ind = index1;
+  if(tle != "" && athr != "" && pges != "" && ind != ""){
 
-    b1 = new Book(tle, athr, pges);
+    b1 = new Book(tle, athr, pges, ind);
     myLibrary.push(b1);
 
     if (typeof(Storage) !== "undefined") {
@@ -68,10 +73,11 @@ function displayLibrary () {
 
     const inDiv4 = document.createElement('button');
     inDiv4.innerText = 'Delete Book';
-    inDiv4.classList.add('delete-book'+i);
+    inDiv4.classList.add('bttn');
+    inDiv4.classList.add('delete-book');
     inDiv4.classList.add('btn');
     inDiv4.classList.add('btn-primary');
-    inDiv4.addEventListener("click", deleteBook(i));
+    
 
     div.appendChild(inDiv1);
     div.appendChild(inDiv2);
@@ -84,9 +90,7 @@ function displayLibrary () {
   }
 }
 
-function deleteBook(index) {
-  alert(index);
-}
+
 
 const form1 = document.querySelector(".book-add-form");
 const f1 = document.querySelector(".f1");
@@ -99,6 +103,13 @@ function showForm(){
   }else if(f1.innerText == 'Hide Form'){
     (f1.innerText = 'Show Form')
   }
+  
 }
 
+function deleteBook(){
+  myLibrary.splice(index1, 1);
+}
+
+
 displayLibrary();
+
