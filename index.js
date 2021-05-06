@@ -40,15 +40,15 @@ function addBookToLibrary (form) {
 console.log(myLibrary);
 function displayLibrary () {
   for (let i = 0; i < myLibrary.length; i++) {
-    const container1 = document.querySelector('#cards-section');
+    // document.getElementById("book-title").innerText += ;
+    // document.getElementById("book-author").innerText += ;
+    // document.getElementById("book-pages").innerText += ;
 
-    const container2 = document.createElement('div');
-    container2.classList.add('card');
-    container2.classList.add('border');
-    container2.classList.add('border-info');
-    container2.classList.add('border-4');
-    container2.classList.add('d-inline-block');
-    
+    const container1 = document.querySelector('#cards-section');
+    const br = document.createElement('br');
+
+    const container2 = document.querySelector('#cards');
+
     const div = document.createElement('div');
     div.classList.add('card-body');
 
@@ -71,7 +71,9 @@ function displayLibrary () {
     div.appendChild(inDiv3);
 
     container2.appendChild(div);
+    
     container1.appendChild(container2);
+    
   }
 }
 
