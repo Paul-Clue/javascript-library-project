@@ -29,3 +29,8 @@
   top: 30%;
   left: 51%
 }
+
+.card-width {
+  width: 15rem;
+  margin: 10px;
+}
