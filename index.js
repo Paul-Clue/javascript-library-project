@@ -77,4 +77,17 @@ function displayLibrary () {
   }
 }
 
+const form1 = document.querySelector(".book-add-form");
+const f1 = document.querySelector(".f1");
+
+
+function showForm(){
+  form1.classList.toggle('hide');
+  if(f1.innerText == 'Show Form'){
+    f1.innerText = 'Hide Form';
+  }else if(f1.innerText == 'Hide Form'){
+    (f1.innerText = 'Show Form')
+  }
+}
+
 displayLibrary();
