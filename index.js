@@ -53,17 +53,17 @@ function displayLibrary () {
     div.classList.add('card-body');
 
     const inDiv1 = document.createElement('h5');
-    inDiv1.innerText = "Test";
+    inDiv1.innerText = myLibrary[i].title;
     inDiv1.classList.add('card-title');
 
     const inDiv2 = document.createElement('h6');
-    inDiv2.innerText = "Test two";
+    inDiv2.innerText = myLibrary[i].author;
     inDiv2.classList.add('card-subtitle');
     inDiv2.classList.add('mb-2');
     inDiv2.classList.add('text-muted');
 
     const inDiv3 = document.createElement('p');
-    inDiv3.innerText = "Test three";
+    inDiv3.innerText = myLibrary[i].pages;
     inDiv3.classList.add('card-text');
 
     div.appendChild(inDiv1);
