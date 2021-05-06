@@ -1,4 +1,9 @@
 let myLibrary = [];
+if(localStorage.getItem('myLibrary') === null){
+  localStorage.setItem('myLibrary', JSON.stringify([]));
+}else{
+  myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
+}
 
 function Book(title, author, pages) {
   this.title = title;
@@ -6,6 +11,7 @@ function Book(title, author, pages) {
   this.pages = pages;
 }
 
+let lib ='';
 function addBookToLibrary (form) {
   let tle = form.title.value;
   let athr = form.author.value;
@@ -13,20 +19,22 @@ function addBookToLibrary (form) {
   b1 = new Book(tle, athr, pges);
   myLibrary.push(b1);
 
+  
+
   if (typeof(Storage) !== "undefined") {
     // Store
-    localStorage.setItem(myLibrary, JSON.stringify(myLibrary));
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
     // Retrieve
-    let lib = JSON.parse(localStorage.getItem("names"));
-    document.getElementById("show").innerHTML = localStorage.getItem(lib);
+    lib = JSON.parse(localStorage.getItem("myLibrary"));
+    document.getElementById("show").innerHTML = lib;
   } else {
     document.getElementById("show").innerHTML = "Sorry, your browser does not support Web Storage...";
   }
   
   
 }
-console.log(myLibrary.length);
+console.log(lib.length);
 // var names = [];
 // names[0] = prompt("New member name?");
 // localStorage.setItem("names", JSON.stringify(names));
