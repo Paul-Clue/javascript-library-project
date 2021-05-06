@@ -40,30 +40,30 @@ function addBookToLibrary (form) {
 console.log(myLibrary);
 function displayLibrary () {
   for (let i = 0; i < myLibrary.length; i++) {
-    // document.getElementById("book-title").innerText += ;
-    // document.getElementById("book-author").innerText += ;
-    // document.getElementById("book-pages").innerText += ;
-
     const container1 = document.querySelector('#cards-section');
-    const br = document.createElement('br');
 
-    const container2 = document.querySelector('#cards');
-
+    const container2 = document.createElement('div');
+    container2.classList.add('card');
+    container2.classList.add('border');
+    container2.classList.add('border-info');
+    container2.classList.add('border-4');
+    container2.classList.add('d-inline-block');
+    
     const div = document.createElement('div');
     div.classList.add('card-body');
 
     const inDiv1 = document.createElement('h5');
-    inDiv1.innerText = "Test";
+    inDiv1.innerText = myLibrary[i].title;
     inDiv1.classList.add('card-title');
 
     const inDiv2 = document.createElement('h6');
-    inDiv2.innerText = "Test two";
+    inDiv2.innerText = myLibrary[i].author;
     inDiv2.classList.add('card-subtitle');
     inDiv2.classList.add('mb-2');
     inDiv2.classList.add('text-muted');
 
     const inDiv3 = document.createElement('p');
-    inDiv3.innerText = "Test three";
+    inDiv3.innerText = myLibrary[i].pages;
     inDiv3.classList.add('card-text');
 
     div.appendChild(inDiv1);
@@ -71,9 +71,7 @@ function displayLibrary () {
     div.appendChild(inDiv3);
 
     container2.appendChild(div);
-    
     container1.appendChild(container2);
-    
   }
 }
 
