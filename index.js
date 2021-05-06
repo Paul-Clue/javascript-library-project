@@ -37,10 +37,19 @@ function addBookToLibrary (form) {
   }
 }
 
-
-
 console.log(myLibrary);
 function displayLibrary () {
+  for (i = 0; i < myLibrary.length; i++) {
+    // document.getElementById("book-title").innerText += ;
+    // document.getElementById("book-author").innerText += ;
+    // document.getElementById("book-pages").innerText += ;
+
+    document.getElementById("innercard").appendChild(`
+      <h5 class="card-title">${myLibrary[i].title}</h5>
+      <h6 class='card-subtitle mb-2 text-muted'>${myLibrary[i].author}</h6>
+      <p class='card-text' id='book-pages'>${myLibrary[i].pages}</p>
+    `);
+  }
 }
 
-
+displayLibrary()
