@@ -107,8 +107,6 @@ function displayLibrary () {
   }
 }
 
-
-
 const form1 = document.querySelector(".book-add-form");
 const f1 = document.querySelector(".f1");
 function showForm(){
