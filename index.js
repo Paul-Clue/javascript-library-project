@@ -23,12 +23,8 @@ function addBookToLibrary (form) {
     myLibrary.push(b1);
 
     if (typeof(Storage) !== "undefined") {
-      // Store
-      localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
       
-      // Retrieve
-      lib = JSON.parse(localStorage.getItem("myLibrary"));
-      document.getElementById("show").innerHTML = lib;
+      localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     } else {
       document.getElementById("show").innerHTML = "Sorry, your browser does not support Web Storage...";
     }
@@ -37,6 +33,7 @@ function addBookToLibrary (form) {
     form.author.value = '';
     form.pages.value = '';
   }
+  location.reload();
 }
 
 console.log(myLibrary);
@@ -129,4 +126,3 @@ console.log(localStorage.getItem('myLibrary'));
 
 
 displayLibrary();
-
