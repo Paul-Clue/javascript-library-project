@@ -4,6 +4,7 @@ if(localStorage.getItem('myLibrary') === null){
   localStorage.setItem('myLibrary', JSON.stringify([]));
 }else{
   myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  // eslint-disable-next-line no-unused-vars
   index1 = myLibrary.length-1;
 }
 class Book {
@@ -12,19 +13,20 @@ class Book {
       this.author = author;
       this.pages = pages;
       this.read = false;
-  };
+  }
 }
+// eslint-disable-next-line no-unused-vars
 function addBookToLibrary (form) {
   let tle = form.title.value;
   let athr = form.author.value;
   let pges = form.pages.value;
   if(tle != "" && athr != "" && pges != ""){
-
+    // eslint-disable-next-line no-undef
     b1 = new Book(tle, athr, pges);
+    // eslint-disable-next-line no-undef
     myLibrary.push(b1);
 
     if (typeof(Storage) !== "undefined") {
-      
       localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     } else {
       document.getElementById("show").innerHTML = "Sorry, your browser does not support Web Storage...";
@@ -41,8 +43,7 @@ console.log(myLibrary);
 function displayLibrary () {
   
   for (let i = 0; i < myLibrary.length; i++) {
-    
-    const container1 = document.querySelector('#cards-section');
+    // const container1 = document.querySelector('#cards-section');
     const container2 = document.createElement('div');
     container2.classList.add('card');
     container2.classList.add('border');
@@ -109,6 +110,7 @@ function displayLibrary () {
 
 const form1 = document.querySelector(".book-add-form");
 const f1 = document.querySelector(".f1");
+// eslint-disable-next-line no-unused-vars
 function showForm(){
   form1.classList.toggle('hide');
   if(f1.innerText == 'Show Form'){
@@ -158,9 +160,5 @@ tableElements1[i].addEventListener("click", deleteBook, false);
 }
 })
 
-// console.log(myLibrary.length);
 console.log(localStorage.getItem('myLibrary'));
-// let lib = localStorage.getItem('myLibrary');
-
-
 displayLibrary();
