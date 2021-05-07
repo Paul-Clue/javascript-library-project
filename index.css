@@ -10,9 +10,7 @@
   flex-direction: column;
   max-width: 25%;
   justify-content: center;
-  position: absolute;
-  top: 45%;
-  left: 45%
+  margin: auto;
 }
 
 .book-add-form > input {
@@ -25,9 +23,8 @@
 }
 
 #butt{
-  position: absolute;
-  top: 30%;
-  left: 51%
+  margin:auto;
+  margin-left: 560px;
 }
 
 .card-width {

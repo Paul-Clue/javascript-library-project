@@ -11,6 +11,7 @@ class Book {
       this.title = title;
       this.author = author;
       this.pages = pages;
+      this.read = false;
   };
 }
 function addBookToLibrary (form) {
@@ -67,6 +68,11 @@ function displayLibrary () {
     inDiv3.innerText = myLibrary[i].pages;
     inDiv3.classList.add('card-text');
 
+    const inDiv33 = document.createElement('p');
+    inDiv33.innerText = "I read this: " + myLibrary[i].read;
+    inDiv33.classList.add('card-text');
+    inDiv33.classList.add('read');
+
     const inDiv4 = document.createElement('button');
     inDiv4.innerText = 'Delete Book';
     inDiv4.classList.add('bttn');
@@ -74,13 +80,27 @@ function displayLibrary () {
     inDiv4.classList.add('btn');
     inDiv4.classList.add('btn-primary');
     inDiv4.setAttribute('id', i)
+
+    const inDiv5 = document.createElement('button');
+    inDiv5.innerText = 'Read';
+    inDiv5.classList.add('bttn2');
+    inDiv5.classList.add('delete-book');
+    inDiv5.classList.add('btn');
+    inDiv5.classList.add('btn-primary');
+    inDiv5.setAttribute('id', i)
+
+    const inDiv6 = document.createElement('p');
     
 
     div.appendChild(inDiv1);
     div.appendChild(inDiv2);
     div.appendChild(inDiv3);
     div.appendChild(inDiv4);
+    div.appendChild(inDiv6);
+    div.appendChild(inDiv5);
+    div.appendChild(inDiv33);
 
+    
     container2.appendChild(div);
     container2.classList.add('card-width');
     document.body.appendChild(container2);
@@ -107,16 +127,36 @@ function deleteBook(elem){
   console.log(elem.target.id);
 }
 
+function readStatus(elem){
+  if(elem.target.innerText == 'Not Read'){
+    elem.target.innerText = 'Read'
+  }else if(elem.target.innerText == 'Read'){
+    elem.target.innerText = 'Not Read'
+  }
 
-// function some(){
-//  let goose = document.getElementById('Test');
-//  goose.innerText = 'This is a test';
-// }
+  if(myLibrary[elem.target.id].read == false){
+    myLibrary[elem.target.id].read = true
+  }else if(myLibrary[elem.target.id].read == true){
+    myLibrary[elem.target.id].read = false
+  }
+
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  location.reload();
+ console.log(myLibrary[elem.target.id].read);
+}
+
 
 document.addEventListener("DOMContentLoaded", function(){
-  var tableElements = document.getElementsByClassName("bttn");  
+  var tableElements = document.getElementsByClassName("bttn2");  
 for(var i=0;i<tableElements.length;i++){ 
-tableElements[i].addEventListener("click", deleteBook, false); 
+tableElements[i].addEventListener("click", readStatus, false); 
+}
+})
+
+document.addEventListener("DOMContentLoaded", function(){
+  var tableElements1 = document.getElementsByClassName("bttn");  
+for(var i=0;i<tableElements1.length;i++){ 
+tableElements1[i].addEventListener("click", deleteBook, false); 
 }
 })
 
