@@ -7,19 +7,18 @@ if(localStorage.getItem('myLibrary') === null){
   // eslint-disable-next-line no-unused-vars
   index1 = myLibrary.length-1;
 }
-class Book {
+
+// I CREATED THIS CLASS CALLED "BookLib()"
+
+class BookLib{
   constructor(title, author, pages) {
-      this.title = title;
-      this.author = author;
-      this.pages = pages;
-      this.read = false;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = false;
   }
-}
 
-// I CREATED THIS MODEL CALLED "bookLib()"
-
-const bookLib = ( () => {
-  function displayLibrary () {
+   displayLibrary () {
     for (let i = 0; i < myLibrary.length; i++) {
       // const container1 = document.querySelector('#cards-section');
       const container2 = document.createElement('div');
@@ -86,34 +85,7 @@ const bookLib = ( () => {
     }
   }
 
-  const form1 = document.querySelector(".book-add-form");
-  const f1 = document.querySelector(".f1");
-
-  // eslint-disable-next-line no-unused-vars
-  function addBookToLibrary (form) {
-    let tle = form.title.value;
-    let athr = form.author.value;
-    let pges = form.pages.value;
-    if(tle != "" && athr != "" && pges != ""){
-      // eslint-disable-next-line no-undef
-      let lib = new Book(tle, athr, pges);
-      // eslint-disable-next-line no-undef
-      myLibrary.push(lib);
-
-      if (typeof(Storage) !== "undefined") {
-        localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-      } else {
-        document.getElementById("show").innerHTML = "Sorry, your browser does not support Web Storage...";
-      }
-      
-      form.title.value = '';
-      form.author.value = '';
-      form.pages.value = '';
-    }
-    location.reload();
-  }
-
-  function showForm () {
+  showForm () {
     form1.classList.toggle('hide');
     if(f1.innerText == 'Show Form'){
       f1.innerText = 'Hide Form';
@@ -122,14 +94,14 @@ const bookLib = ( () => {
     }
   }
 
-  function deleteBook(elem){
+   deleteBook(elem){
     this.parentElement.parentElement.style.visibility = 'hidden';
     myLibrary.splice(elem.target.id, 1);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     console.log(elem.target.id);
   }
 
-  function readStatus(elem){
+   readStatus(elem){
     if(elem.target.innerText == 'Not Read'){
       elem.target.innerText = 'Read'
     }else if(elem.target.innerText == 'Read'){
@@ -147,32 +119,60 @@ const bookLib = ( () => {
   console.log(myLibrary[elem.target.id].read);
   }
 
-  return {readStatus, deleteBook, showForm, addBookToLibrary, displayLibrary};
+};
 
-})();
+// eslint-disable-next-line no-unused-vars
+function addBookToLibrary (form) {
+  let tle = form.title.value;
+  let athr = form.author.value;
+  let pges = form.pages.value;
+  if(tle != "" && athr != "" && pges != ""){
+    // eslint-disable-next-line no-undef
+    let lib = new BookLib(tle, athr, pges);
+    // eslint-disable-next-line no-undef
+    myLibrary.push(lib);
+
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    } else {
+      document.getElementById("show").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+    
+    form.title.value = '';
+    form.author.value = '';
+    form.pages.value = '';
+  }
+  location.reload();
+}
 
 
-// I USED THE FUNCTIONS FROM THE "bookLib()" model below.
+form1 = document.querySelector(".book-add-form");
+   f1 = document.querySelector(".f1");
+
+let blib = new BookLib('t', 'i', 'p');
 
 document.addEventListener("DOMContentLoaded", function(){
-  var tableElements = document.getElementsByClassName("bttn2");  
-for(var i=0;i<tableElements.length;i++){ 
-tableElements[i].addEventListener("click", bookLib.readStatus, false); 
+  var tableElements = document.getElementsByClassName("bttn2");
+for(var i=0;i<tableElements.length;i++){
+tableElements[i].addEventListener("click", blib.readStatus, false);
 }
 })
 
 document.addEventListener("DOMContentLoaded", function(){
-  var tableElements1 = document.getElementsByClassName("bttn");  
-for(var i=0;i<tableElements1.length;i++){ 
-tableElements1[i].addEventListener("click", bookLib.deleteBook, false); 
+  var tableElements1 = document.getElementsByClassName("bttn");
+for(var i=0;i<tableElements1.length;i++){
+tableElements1[i].addEventListener("click", blib.deleteBook, false);
 }
 })
 
 let formm = document.querySelector('#butt');
-  formm.addEventListener('click', bookLib.showForm);
+  formm.addEventListener('click', blib.showForm);
+
+
+  
 
 console.log(localStorage.getItem('myLibrary'));
-bookLib.displayLibrary();
+blib.displayLibrary();
 
 
 
