@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.book-add-form {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  max-width: 25%;
+  justify-content: center;
+  margin: auto;
+}
+
+.book-add-form > input {
+  margin: 10px;
+  padding: 10px 40px 10px 10px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#butt {
+  margin: auto;
+  margin-left: 560px;
+}
+
+.card-width {
+  width: 15rem;
+  margin: 10px;
+}
